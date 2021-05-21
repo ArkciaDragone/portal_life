@@ -1,0 +1,18 @@
+{
+    "log":{
+        "filename": "portal_life.log",
+        "level": "WARNING",
+        "format": "{asctime} {levelname:7s} {message}"
+    },
+    "urls": {
+        "parking": "https://portal.pku.edu.cn/portal2017/publicsearch/parkinglot/retrParkingspaces.do",
+        "room": "https://portal.pku.edu.cn/portal2017/publicsearch/classroom/retrClassRoomInfos.do",
+        "canteen": "https://portal.pku.edu.cn/portal2017/publicsearch/canteen/retrCarteenInfos.do",
+        "gym": "https://portal.pku.edu.cn/portal2017/publicsearch/gym/retrGymInfos.do?capacityType=1"
+    },
+    "mongo": {
+        "host": "localhost",
+        "port": 27017,
+        "database_name": "portal_life"
+    }
+}
