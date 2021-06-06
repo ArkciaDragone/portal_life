@@ -20,6 +20,7 @@ except FileNotFoundError:
     exit(1)
 log.basicConfig(filename=config.log.filename, style='{',
                 format=config.log.format, level=config.log.level)
+
 # Connect to database
 try:
     client = MongoClient(host=config.mongo.host, port=config.mongo.port,
