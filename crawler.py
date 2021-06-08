@@ -24,6 +24,8 @@ log.basicConfig(filename=config.log.filename, style='{',
 # Connect to database
 try:
     client = MongoClient(host=config.mongo.host, port=config.mongo.port,
+                         username=config.mongo.username, password=config.mongo.password,
+                         authSource=config.mongo.auth_db,
                          serverSelectionTimeoutMS=3000)
     log.debug(f'database connected as {client.address}')
     db = client[config.mongo.database_name]
@@ -32,14 +34,17 @@ except ServerSelectionTimeoutError:
         f'failed to connect to database at {config.mongo.host}:{config.mongo.port}')
     exit(2)
 
-# Pull contents
-for name, url in config.urls.items():
-    try:
-        resp = requests.get(url)
-        j = resp.json()
-    except (ValueError, requests.exceptions.ConnectionError) as e:
-        log.warning('failed to pull ' + name + ' data, reason: ' + str(e))
-        continue
-    j['pull_time'] = datetime.datetime.now()
-    i = db[name].insert_one(j).inserted_id
-    log.info(f'{name}: {i}')
+__all__ = [config, client]
+
+if __name__ == '__main__':
+    # Pull contents
+    for name, url in config.urls.items():
+        try:
+            resp = requests.get(url)
+            j = resp.json()
+        except (ValueError, requests.exceptions.ConnectionError) as e:
+            log.warning('failed to pull ' + name + ' data, reason: ' + str(e))
+            continue
+        j['pull_time'] = datetime.datetime.now()
+        i = db[name].insert_one(j).inserted_id
+        log.info(f'{name}: {i}')

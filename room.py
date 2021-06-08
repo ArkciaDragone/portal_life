@@ -1,5 +1,5 @@
+from crawler import client
 from pyecharts.commons.utils import JsCode
-from pymongo import MongoClient
 import pandas as pd
 from datetime import datetime, time, timedelta
 from operator import itemgetter
@@ -9,10 +9,10 @@ from pyecharts.charts import HeatMap, Timeline
 
 # constants and options
 ABSOLUTE = False
-BEGIN = datetime(2021, 5, 26)
+BEGIN = datetime(2021, 5, 24)
 END = BEGIN + timedelta(weeks=1)
 IGNORED = set(['电子', '化学', '电教听力', '地学', '哲学', '电教'])  # bad data exist
-TITLE = f'room ({BEGIN.day}-{END.day})'
+TITLE = f'room ({BEGIN.month}.{BEGIN.day}-{END.month}.{END.day})'
 WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 
@@ -25,7 +25,6 @@ def extract(x, absolute=False):
 
 
 # connect to database and parse data
-client = MongoClient()
 col = client.portal_life.room
 data = [extract(i, ABSOLUTE) for i in col.find(
         {'pull_time': {'$gt': BEGIN, '$lt': END}},

@@ -13,6 +13,9 @@
     "mongo": {
         "host": "localhost",
         "port": 27017,
-        "database_name": "portal_life"
+        "database_name": "portal_life",
+        "auth_db": "",
+        "username": "",
+        "password": ""
     }
 }

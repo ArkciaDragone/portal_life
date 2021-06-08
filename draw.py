@@ -1,7 +1,7 @@
+from crawler import client
 from pyecharts.globals import ThemeType
 import pyecharts.options as opts
 from pyecharts.charts import Line
-from pymongo import MongoClient
 import datetime
 
 # constants and options
@@ -16,7 +16,6 @@ def getname(x, i): return x['rows'][i]['name']
 def getpop(x, i): return x['rows'][i]['ip'] / x['rows'][i]['seat']
 
 # connect to database and query data
-client = MongoClient()
 col = client.portal_life.canteen
 data = [i for i in col.find(
     {'pull_time': {'$gt': BEGIN, '$lt': END}}, sort=[('pull_time', 1)])]

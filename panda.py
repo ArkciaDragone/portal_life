@@ -1,5 +1,4 @@
-from pprint import pprint
-from pymongo import MongoClient
+from crawler import client
 import pandas as pd
 import datetime
 from pyecharts.globals import ThemeType
@@ -23,7 +22,6 @@ def extract(x, absolute=False):
     return d
 
 # connect to database and use pandas to parse data
-client = MongoClient()
 col = client.portal_life.canteen
 data = [extract(i, ABSOLUTE) for i in col.find(
         {'pull_time': {'$gt': BEGIN, '$lt': END}} if SELECT else {},

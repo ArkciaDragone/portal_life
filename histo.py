@@ -1,11 +1,10 @@
+from crawler import client
 from pyecharts.globals import ThemeType
 import pyecharts.options as opts
 from pyecharts.charts import Bar
 from pyecharts.commons.utils import JsCode
-from pymongo import MongoClient
 import pandas as pd
 import datetime
-from pprint import pprint
 
 # constants and options
 IGNORE = True
@@ -25,7 +24,6 @@ def extract(x):
     return d
 
 # connect to database
-client = MongoClient()
 col = client.portal_life.canteen
 data = {}
 f = datetime.datetime(2021, 5, 22, RANGE[0][0], RANGE[0][1])
