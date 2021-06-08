@@ -1,2 +1,5 @@
 .vscode
 portal_life.log
+__pycache__
+*.html
+*.csv
