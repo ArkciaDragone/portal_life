@@ -5,6 +5,7 @@ Portal Life通过P大门户数据分析制作可视化图表。使用MongoDB作�
 
 通过对历史数据的分析得出食堂就餐人数和教室空闲状况的规律，用这样的规律来帮助任何感兴趣的浏览者获得更好的校园体验。
 
+![Canteen(5.22-6.6)](imgs/canteen7.gif)
 # Usage
 首先安装各依赖包 `pip install -r requirements.txt`。
 
@@ -40,3 +41,15 @@ Portal Life通过P大门户数据分析制作可视化图表。使用MongoDB作�
  - 现象背后的原因分析
  - 机器学习与预测
  - 网站/APP服务式发布
+
+ # GIF
+ |晚餐期间“双峰”的食堂|晚餐期间其它“单峰”食堂|
+ |:-:|:-:|
+ |!["Bimodal" canteens](imgs/canteen8.1.gif)|!["Unimodal" canteens](imgs/canteen8.2.gif)|
+
+ |晚餐后人数仍然较多的食堂|晚餐后人数快速下降的食堂|
+ |:-:|:-:|
+ |!["Bimodal" canteens](imgs/canteen9.1.gif)|!["Unimodal" canteens](imgs/canteen9.2.gif)|
+
+一周的教室空闲率
+![Classroom util rate](imgs/room1.gif)
